@@ -1,9 +1,5 @@
 class Time {
-  constructor() {}
-
-  static onEveryFrame(callBack) {
-    setInterval(callBack, 30);
+  onEveryFrame(callBack) {
+    setInterval(callBack, 15);
   }
 }
-
-console.log(Time.prototype);

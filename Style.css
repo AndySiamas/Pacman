@@ -1,0 +1,9 @@
+html {
+  background-color: black;
+}
+
+.Actor {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
