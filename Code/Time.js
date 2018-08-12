@@ -1,5 +1,5 @@
 class Time {
   onEveryFrame(callBack) {
-    setInterval(callBack, 15);
+    setInterval(callBack, 20);
   }
 }

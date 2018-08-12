@@ -1,28 +1,27 @@
-class Input {
-  constructor() {
-    // Key Downs
-    this.upKeyDown = false;
-    this.downKeyDown = false;
-    this.leftKeyDown = false;
-    this.rightKeyDown = false;
+var _Input = function() {
+  // Key Downs
+  this.upKeyDown = false;
+  this.downKeyDown = false;
+  this.leftKeyDown = false;
+  this.rightKeyDown = false;
     
-    // Key Codes
-    // Arrow key codes
-    this.upKey = 38;
-    this.downKey = 40;
-    this.leftKey = 37;
-    this.rightKey = 39;
+  // Key Codes
+  // Arrow key codes
+  this.upKey = 38;
+  this.downKey = 40;
+  this.leftKey = 37;
+  this.rightKey = 39;
     
-    // WASD key codes
-    this.wKey = 87;
-    this.sKey = 83;
-    this.aKey = 65;
-    this.dKey = 68;
+  // WASD key codes
+  this.wKey = 87;
+  this.sKey = 83;
+  this.aKey = 65;
+  this.dKey = 68;
 
-    this.createKeyBindings();
-  };
+  this.createKeyBindings();
+}
 
-  createKeyBindings() {
+_Input.prototype.createKeyBindings = function() {
     const input = this;
 
     $('html').keydown(function(event) {
@@ -59,13 +58,7 @@ class Input {
       else if (keyReleased === input.rightKey || keyReleased === input.dKey) {
         input.rightKeyDown = false;
       }
-    });
-  }
-
-  keyDown(keyName) {
-    if (keyName === 'W' || keyName === 'UP') return this.upKeyDown;
-    if (keyName === 'A' || keyName === 'LEFT') return this.leftKeyDown;
-    if (keyName === 'S' || keyName === 'DOWN') return this.downKeyDown;
-    if (keyName === 'D' || keyName === 'RIGHT') return this.rightKeyDown;
-  }
+  });
 }
+
+var Input = new _Input();
