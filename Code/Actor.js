@@ -25,17 +25,17 @@ class Actor extends Time {
 
   checkForInput() {
     if (Input.upKeyDown) {
-      this.move(0, -20);
+      this.move(0, -5);
     }
     else if (Input.downKeyDown) {
-      this.move(0, 20);
+      this.move(0, 5);
     }
 
     if (Input.leftKeyDown) {
-      this.move(-20, 0);
+      this.move(-5, 0);
     }
     else if (Input.rightKeyDown) {
-      this.move(20, 0);
+      this.move(5, 0);
     }
   }
 }

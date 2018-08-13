@@ -1,6 +1,6 @@
 class sprites {
   constructor() {
-    this.pacman = { node: '<span class="Actor" id="Pacman"> <img src="Images/Gifs/Pacman.gif"> </span>', class: 'Pacman' };
+    this.pacman = { node: '<span class="Actor" id="Pacman"> <img src="Images/Pacman/PacmanStatic.png"> </span>', class: 'Pacman' };
   }
 
   createSprite(className) {
