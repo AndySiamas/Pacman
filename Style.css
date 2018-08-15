@@ -2,6 +2,12 @@ html {
   background-color: black;
 }
 
+.Level {
+  top: 20%;
+  left: 25%;
+  position: absolute;
+}
+
 .Actor {
   position: absolute;
   top: 0;
@@ -9,8 +15,27 @@ html {
 }
 
 img {
-  height: 10%;
-  width: 10%;
+  height: 200px;
+  width: auto;
+  margin: 0px 0px;
+  padding: 0px 0px;
+}
+
+.Pacman {
+  height: 10px;
+}
+
+.Block {
+  height: 100px;
+  width: 100px;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  position: absolute;
+}
+
+.row {
+  margin: 0px, 0px;
+  padding: 0px 0px;
 }
 
 .item1 { grid-area: header; }

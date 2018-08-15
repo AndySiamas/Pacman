@@ -1,6 +1,6 @@
 class Level {
 	constructor() {
-		this.map = this.constructMap(25);
+		this.map = this.createCustomMap();
 	}
 
 	constructMap(tiles) {
@@ -12,9 +12,22 @@ class Level {
 			}
 			matrix.push(currentRow);
 		}
-		console.log(matrix);
+		HtmlHandler.constructMap(matrix);
 		return matrix;
 	}
-}
 
-var level = new Level();
+	createCustomMap() {
+		var map = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+							 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
+	
+		HtmlHandler.constructMap(map);
+	}
+}

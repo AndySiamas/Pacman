@@ -1,5 +1,5 @@
 class Actor extends Time {
-  constructor(className, speed = 20) {
+  constructor(className, speed = 30) {
     super();
     this.speed = speed;
     this.node = Sprites.createSprite(className);
@@ -25,17 +25,17 @@ class Actor extends Time {
 
   checkForInput() {
     if (Input.upKeyDown) {
-      this.move(0, -5);
+      this.move(0, -this.speed);
     }
     else if (Input.downKeyDown) {
-      this.move(0, 5);
+      this.move(0, this.speed);
     }
 
     if (Input.leftKeyDown) {
-      this.move(-5, 0);
+      this.move(-this.speed, 0);
     }
     else if (Input.rightKeyDown) {
-      this.move(5, 0);
+      this.move(this.speed, 0);
     }
   }
 }
