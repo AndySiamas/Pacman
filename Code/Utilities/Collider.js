@@ -18,9 +18,18 @@ class Collider {
     context.strokeStyle = '#003300';
     context.stroke();
   }
+
+  isCollidingWith(otherCollider) {
+    var combinedRadii = this.radius + otherCollider.radius;
+    var positionOne = [this.x, this.y];
+    var positionTwo = [otherCollider.x, otherCollider.y];
+    var distanceBetweenColliders = getDistance(positionOne, positionTwo);
+    return (distanceBetweenColliders < combinedRadii);
+  }
 }
 
 $(document).ready(function() {
   var colliderOne = new Collider(50, 100, 100);
-  var colliderTwo = new Collider(50, 300, 100);
+  var colliderTwo = new Collider(50, 100, 199);
+  console.log(colliderOne.isCollidingWith(colliderTwo));
 });
