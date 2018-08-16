@@ -1,12 +1,7 @@
-class Actor extends Time {
+class Actor extends Entity {
   constructor(className, speed = 30) {
-    super();
+    super(className);
     this.speed = speed;
-    this.node = Sprites.createSprite(className);
-    this.x = parseInt(this.node.css('left'));
-    this.y = parseInt(this.node.css('top'));
-    this.targetX = this.x;
-    this.targetY = this.y;
     this.init();
   }
 

@@ -8,3 +8,7 @@ const getDistance = (positionOne, positionTwo) => {
   var differenceY = Math.pow((secondY - firstY), 2);
   return Math.sqrt(differenceX + differenceY);
 }
+
+const isInRange = (numberToCheck, rangeMin, rangeMax) => {
+  return numberToCheck >= rangeMin && numberToCheck <= rangeMax;
+}

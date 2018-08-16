@@ -6,6 +6,8 @@ class _HtmlHandler {
     $(`.${node}`).append(sprite.node);
     $(`#${sprite.class}`).css('left', x);
     $(`#${sprite.class}`).css('top', y);
+    $(`#${sprite.class}`).css('width', '100%');
+    $(`#${sprite.class}`).css('height', '100%');
     return $(`#${sprite.class}`);
   }
 

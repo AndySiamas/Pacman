@@ -1,35 +1,44 @@
 class Collider {
-  constructor(radius, startX, startY) {
-    this.radius = radius;
+  constructor(color, width, height, startX, startY) {
+    this.color = color;
+    this.width = width;
+    this.height = height;
     this.x = startX;
     this.y = startY;
     this.drawCollider();
   }
 
+  getCoordinates() {
+    var leftBorderX = this.x;
+    var rightBorderX = this.x + this.width;
+    var topBorderY = this.y;
+    var bottomBorderY = this.y + this.height;
+    return {leftX: leftBorderX, rightX: rightBorderX, topY: topBorderY, bottomY: bottomBorderY};
+  }
+
   drawCollider() {
     var canvas = document.getElementById('MyCanvas');
     var context = canvas.getContext('2d');
-    
     context.beginPath();
-    context.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-    context.fillStyle = 'green';
+    context.rect(this.x, this.y, this.width, this.height);
+    context.fillStyle = this.color;
     context.fill();
-    context.lineWidth = 5;
-    context.strokeStyle = '#003300';
     context.stroke();
   }
 
-  isCollidingWith(otherCollider) {
-    var combinedRadii = this.radius + otherCollider.radius;
-    var positionOne = [this.x, this.y];
-    var positionTwo = [otherCollider.x, otherCollider.y];
-    var distanceBetweenColliders = getDistance(positionOne, positionTwo);
-    return (distanceBetweenColliders < combinedRadii);
+  isCollidingWith(other) {
+    var myLoc = this.getCoordinates();
+    var otherLoc = other.getCoordinates();
+    var isInXPlane = isInRange(myLoc.leftX, otherLoc.leftX, otherLoc.rightX) ||  
+                     isInRange(myLoc.rightX, otherLoc.leftX, otherLoc.rightX);
+    var isInYPlane = isInRange(myLoc.topY, otherLoc.topY, otherLoc.bottomY) ||  
+                     isInRange(myLoc.bottomY, otherLoc.topY, otherLoc.bottomY);
+    return isInXPlane && isInYPlane;
   }
 }
 
 $(document).ready(function() {
-  var colliderOne = new Collider(50, 100, 100);
-  var colliderTwo = new Collider(50, 100, 199);
+  var colliderOne = new Collider('red', 20, 20, 20, 40);
+  var colliderTwo = new Collider('blue', 20, 20, 41, 30);
   console.log(colliderOne.isCollidingWith(colliderTwo));
 });
