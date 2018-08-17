@@ -29,16 +29,24 @@ class Collider {
   isCollidingWith(other) {
     var myLoc = this.getCoordinates();
     var otherLoc = other.getCoordinates();
-    var isInXPlane = isInRange(myLoc.leftX, otherLoc.leftX, otherLoc.rightX) ||  
-                     isInRange(myLoc.rightX, otherLoc.leftX, otherLoc.rightX);
-    var isInYPlane = isInRange(myLoc.topY, otherLoc.topY, otherLoc.bottomY) ||  
-                     isInRange(myLoc.bottomY, otherLoc.topY, otherLoc.bottomY);
-    return isInXPlane && isInYPlane;
+
+    const isHittingLeftBorder   =  isInRange(myLoc.leftX, otherLoc.leftX, otherLoc.rightX, () => console.log('LEFT'));
+
+    const isHittingRightBorder  =  isInRange(myLoc.rightX, otherLoc.leftX, otherLoc.rightX, () => console.log('RIGHT')); 
+
+    const isHittingTopBorder    =  isInRange(myLoc.topY, otherLoc.topY, otherLoc.bottomY, () => console.log('TOP'));
+
+    const isHittingBottomBorder =  isInRange(myLoc.bottomY, otherLoc.topY, otherLoc.bottomY, () => console.log('BOTTOM'));
+
+    var isInXPlane = isHittingLeftBorder ||  isHittingRightBorder;
+    var isInYPlane = isHittingTopBorder  ||  isHittingBottomBorder;
+
+    return (isInXPlane && isInYPlane);
   }
 }
 
 $(document).ready(function() {
-  var colliderOne = new Collider('red', 20, 20, 20, 40);
-  var colliderTwo = new Collider('blue', 20, 20, 41, 30);
+  var colliderOne = new Collider('red', 20, 20, 55, 10);
+  var colliderTwo = new Collider('blue', 20, 20, 40, 30);
   console.log(colliderOne.isCollidingWith(colliderTwo));
 });

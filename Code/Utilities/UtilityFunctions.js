@@ -9,6 +9,10 @@ const getDistance = (positionOne, positionTwo) => {
   return Math.sqrt(differenceX + differenceY);
 }
 
-const isInRange = (numberToCheck, rangeMin, rangeMax) => {
-  return numberToCheck >= rangeMin && numberToCheck <= rangeMax;
+const isInRange = (numberToCheck, rangeMin, rangeMax, callBack = function(){}) => {
+  if (numberToCheck >= rangeMin && numberToCheck <= rangeMax) {
+  	callBack();
+  	return true;
+  }
+  return false;
 }
